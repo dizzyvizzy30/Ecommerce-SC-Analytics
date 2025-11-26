@@ -1,75 +1,55 @@
-import kagglehub
 import pandas as pd
 import os
-from pathlib import Path
 
 class DataLoader:
     """Utility class to load and manage e-commerce dataset"""
-    
-    def __init__(self):
-        self.dataset_path = None
+
+    def __init__(self, data_path="data/raw"):
+        self.data_path = data_path
+        self.test_path = os.path.join(data_path, "test")
+        self.train_path = os.path.join(data_path, "train")
         self.data = {}
-    
-    def download_dataset(self):
-        """Download the dataset from Kaggle"""
-        try:
-            self.dataset_path = kagglehub.dataset_download("bytadit/ecommerce-order-dataset")
-            print(f"✓ Dataset downloaded to: {self.dataset_path}")
-            return self.dataset_path
-        except Exception as e:
-            print(f"✗ Error downloading dataset: {e}")
-            return None
-    
+
     def list_files(self):
-        """List all files in the dataset"""
-        if not self.dataset_path:
-            print("Dataset not downloaded yet. Call download_dataset() first.")
-            return []
-        
-        files = os.listdir(self.dataset_path)
-        print(f"\nAvailable files ({len(files)}):")
-        for f in files:
-            print(f"  - {f}")
-        return files
-    
-    def load_all_csv(self):
-        """Load all CSV files from the dataset"""
-        if not self.dataset_path:
-            self.download_dataset()
-        
-        csv_files = [f for f in os.listdir(self.dataset_path) if f.endswith('.csv')]
-        
-        for csv_file in csv_files:
-            file_path = os.path.join(self.dataset_path, csv_file)
-            df = pd.read_csv(file_path)
-            self.data[csv_file] = df
-            print(f"✓ Loaded {csv_file}: {df.shape}")
-        
+        """List all files in the test and train directories"""
+        for folder in [self.test_path, self.train_path]:
+            print(f"\nFiles in {folder}:")
+            for file in os.listdir(folder):
+                print(f"  - {file}")
+
+    def load_csv_from_folder(self, folder_path):
+        """Load all CSV files from a specific folder"""
+        dataframes = {}
+        for file in os.listdir(folder_path):
+            if file.endswith('.csv'):
+                file_path = os.path.join(folder_path, file)
+                df = pd.read_csv(file_path)
+                dataframes[file] = df
+                print(f"✓ Loaded {file}: {df.shape}")
+        return dataframes
+
+    def load_all_data(self):
+        """Load all data from test and train folders"""
+        print("\nLoading test data...")
+        self.data['test'] = self.load_csv_from_folder(self.test_path)
+        print("\nLoading train data...")
+        self.data['train'] = self.load_csv_from_folder(self.train_path)
         return self.data
-    
-    def save_to_local(self, output_dir="data/raw"):
-        """Save all loaded data to local directory"""
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
-        
-        for filename, df in self.data.items():
-            output_path = os.path.join(output_dir, filename)
-            df.to_csv(output_path, index=False)
-            print(f"✓ Saved {filename} to {output_dir}/")
-    
+
     def summary(self):
         """Print summary of loaded data"""
         print("\n=== Dataset Summary ===")
-        for filename, df in self.data.items():
-            print(f"\n{filename}:")
-            print(f"  Shape: {df.shape}")
-            print(f"  Columns: {df.columns.tolist()}")
-            print(f"  Memory: {df.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
+        for category, datasets in self.data.items():
+            print(f"\nCategory: {category}")
+            for filename, df in datasets.items():
+                print(f"  {filename}:")
+                print(f"    Shape: {df.shape}")
+                print(f"    Columns: {df.columns.tolist()}")
+                print(f"    Memory: {df.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
 
 # Usage
 if __name__ == "__main__":
     loader = DataLoader()
-    loader.download_dataset()
     loader.list_files()
-    loader.load_all_csv()
-    loader.save_to_local()
+    loader.load_all_data()
     loader.summary()
