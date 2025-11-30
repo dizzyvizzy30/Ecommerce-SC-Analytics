@@ -371,7 +371,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - GitHub: https://github.com/dizzyvizzy30
 - LinkedIn: https://www.linkedin.com/in/ashay-parikh/
-- Email: asparikh.wisc@gmail.com
+- Email: asparikh.wisc@gmail.com 
 
 **Project Link**: [https://github.com/yourusername/Ecommerce-SC-Analytics](https://github.com/yourusername/Ecommerce-SC-Analytics)
 
