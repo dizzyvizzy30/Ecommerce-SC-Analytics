@@ -367,19 +367,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-**Project Maintainer**: [Your Name]
+**Project Creator**: Ashay Parikh
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: https://github.com/dizzyvizzy30/
+- LinkedIn: https://www.linkedin.com/in/ashay-parikh/
+- Email: asparikh.wisc@gmail.com
 
-**Project Link**: [https://github.com/yourusername/Ecommerce-SC-Analytics](https://github.com/yourusername/Ecommerce-SC-Analytics)
+
+**Project Link**: https://github.com/dizzyvizzy30/Ecommerce-SC-Analytics
 
 ---
 
 ## Acknowledgments
 
-- Brazilian e-commerce dataset providers
+- E-commerce dataset provider
 - Open-source community for excellent libraries
 - scikit-learn documentation and tutorials
 
@@ -391,8 +392,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Deploy model as REST API (Flask/FastAPI)
 - [ ] Build interactive dashboard (Streamlit/Dash)
 - [ ] Implement deep learning models (LSTM, Transformers)
-- [ ] Add real-time prediction capability
-- [ ] Integrate external data (weather, traffic, holidays)
+- [ ] Integrate external data (weather, holidays)
 - [ ] Develop customer lifetime value prediction
 - [ ] Create product recommendation system
 
