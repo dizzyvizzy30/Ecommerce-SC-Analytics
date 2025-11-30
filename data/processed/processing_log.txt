@@ -1,0 +1,36 @@
+[2025-11-29 20:12:01] ============================================================
+[2025-11-29 20:12:01] STARTING DATA PROCESSING PIPELINE
+[2025-11-29 20:12:01] ============================================================
+[2025-11-29 20:12:01] Processing customers dataset...
+[2025-11-29 20:12:01]   Customers: 0 → 0 missing values
+[2025-11-29 20:12:01] Processing products dataset...
+[2025-11-29 20:12:01]   Filled 308 missing product categories
+[2025-11-29 20:12:01]   Filled 15 missing product_weight_g with median: 700.00
+[2025-11-29 20:12:01]   Filled 15 missing product_length_cm with median: 25.00
+[2025-11-29 20:12:01]   Filled 15 missing product_height_cm with median: 13.00
+[2025-11-29 20:12:01]   Filled 15 missing product_width_cm with median: 20.00
+[2025-11-29 20:12:01]   Products: 368 → 0 missing values
+[2025-11-29 20:12:01] Processing orders dataset...
+[2025-11-29 20:12:01]   Filled 9 missing approval dates with purchase timestamp
+[2025-11-29 20:12:01]   1889 orders have no delivery timestamp (in-transit/cancelled)
+[2025-11-29 20:12:01]   Orders: 1898 → 1889 missing values
+[2025-11-29 20:12:01] Processing order items dataset...
+[2025-11-29 20:12:02]   Order Items: 0 → 0 missing values
+[2025-11-29 20:12:02] Processing payments dataset...
+[2025-11-29 20:12:02]   Payments: 0 → 0 missing values
+[2025-11-29 20:12:02] Removing duplicates...
+[2025-11-29 20:12:02]   customers: No duplicates found
+[2025-11-29 20:12:02]   products: Keeping duplicates (products can appear in multiple orders)
+[2025-11-29 20:12:02]   orders: No duplicates found
+[2025-11-29 20:12:02]   order_items: No duplicates found
+[2025-11-29 20:12:02]   payments: No duplicates found
+[2025-11-29 20:12:02] ============================================================
+[2025-11-29 20:12:02] DATA PROCESSING COMPLETE
+[2025-11-29 20:12:02] ============================================================
+[2025-11-29 20:12:02] 
+Saving processed data to ../data/processed...
+[2025-11-29 20:12:02]   Saved customers_processed.csv - Shape: (89316, 4)
+[2025-11-29 20:12:03]   Saved products_processed.csv - Shape: (89316, 6)
+[2025-11-29 20:12:04]   Saved orders_processed.csv - Shape: (89316, 7)
+[2025-11-29 20:12:05]   Saved order_items_processed.csv - Shape: (89316, 5)
+[2025-11-29 20:12:05]   Saved payments_processed.csv - Shape: (89316, 5)
